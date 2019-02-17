@@ -16,7 +16,7 @@
                         <a href="#">Shop</a>
                     </li>
                     <li>
-                        <a href="#">Login</a>
+                        <a href="login.php">Login</a>
                     </li>
                     <li>
                         <a href="admin">Admin</a>

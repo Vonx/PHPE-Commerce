@@ -149,6 +149,14 @@ echo $products;
                     }
 }
 
+function displayMessage(){
+if (isset($_SESSION['message']))
+                      {
+                          echo $_SESSION['message'];
+                          unset($_SESSION['message']);
+                      }
+}
+
 function loginUser(){
 
         if(isset($_POST['submit'])){
@@ -159,12 +167,11 @@ function loginUser(){
         confirm($query);
 
         if(mysqli_num_rows($query) == 0){
-        redirect("login.php");
+        $_SESSION['message'] = 'Invalid Login Credentials';
 
         }
         else {
         redirect("admin");
-
         }
 
     }

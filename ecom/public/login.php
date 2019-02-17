@@ -10,6 +10,8 @@
             <h1 class="text-center">Login</h1>
         <div class="col-sm-4 col-sm-offset-5">         
             <form class="" action="" method="post" enctype="multipart/form-data">
+            <?php loginUser(); ?>
+
                 <div class="form-group"><label for="">
                     username<input type="text" name="username" class="form-control"></label>
                 </div>
@@ -21,6 +23,8 @@
                   <input type="submit" name="submit" class="btn btn-primary" >
                 </div>
             </form>
+            <h4><?php displayMessage(); ?></h4>
+
         </div>  
 
 

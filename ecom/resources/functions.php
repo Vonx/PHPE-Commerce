@@ -47,7 +47,7 @@ $products = <<<DELIMETER
                                 <h4><a href="item.php?id={$row['product_id']}">{$row['product_title']}</a>
                                 </h4>
                                 <p>{$row['product_description']}</p>
-                            <a class="btn btn-primary" target="_blank" href="item.php?={$row['product_id']}">Add to cart</a>
+                            <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to cart</a>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,29 @@ function loginUser(){
         }
 
     }
+}
 
+function sendMessage(){
+       if(isset($_POST['submit'])){
+            $to  = "someemailaddress@gmail.com";
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $subject = $_POST['subject'];
+            $message = $_POST['message'];
+
+            $headers = "From: {$name} {$email}";
+
+            $result = mail($to, $subject, $message, $headers);
+
+            if($result){
+                $_SESSION['message'] = 'Message sent successfully';
+                redirect("contact.php");
+                }
+            else {
+             $_SESSION['message'] = 'Message was not able to be sent';
+                             redirect("contact.php");
+                }
+}
 }
 
 ?>

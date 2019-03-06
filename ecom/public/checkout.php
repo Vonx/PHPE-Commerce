@@ -2,11 +2,13 @@
 
 <?php include(TEMPLATE_FRONT. DS . "header.php") ?>
 
+
 <?php
+if($_SESSION['product_1']){
+echo $_SESSION['product_1'];
+}
 
-$_SESSION['PRODUCT_1'] = 1;
 ?>
-
 
     <!-- Page Content -->
     <div class="container">
@@ -15,9 +17,8 @@ $_SESSION['PRODUCT_1'] = 1;
 <!-- /.row -->
 
 <div class="row">
-
+      <h4 class="text-center bg-danger"><?php displayMessage(); ?> </h4>
       <h1>Checkout</h1>
-
 <form action="">
     <table class="table table-striped">
         <thead>
@@ -26,17 +27,10 @@ $_SESSION['PRODUCT_1'] = 1;
            <th>Price</th>
            <th>Quantity</th>
            <th>Sub-total</th>
-
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>apple</td>
-                <td>$23</td>
-                <td>3</td>
-                <td>2</td>
-
-            </tr>
+    <?php cart(); ?>
         </tbody>
     </table>
 </form>

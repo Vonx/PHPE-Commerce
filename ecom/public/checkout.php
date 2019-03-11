@@ -4,6 +4,8 @@
 
 
 <?php
+
+$_SESSION['orderTotal'] = 0;
 if($_SESSION['product_1']){
 echo $_SESSION['product_1'];
 }
@@ -55,7 +57,7 @@ echo $_SESSION['product_1'];
 
 <tr class="order-total">
 <th>Order Total</th>
-<td><strong><span class="amount">$3444</span></strong> </td>
+<td><strong><span class="amount">{$_SESSION['orderTotal']}</span></strong> </td>
 </tr>
 
 

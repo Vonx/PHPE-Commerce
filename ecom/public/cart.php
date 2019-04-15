@@ -37,22 +37,28 @@
 
                else {
                  $_SESSION['message'] = "Your cart is empty";
-                                          redirect("checkout.php");
                }
   }
 
+
+
   if(isset($_GET['delete'])){
   $_SESSION['product_' . $_GET['delete']] = '0';
-  $_SESSION['message'] = "Your cart is empty";
+
+
    redirect("checkout.php");
+
   }
 
 
 function cart() {
 
+$item_name = 1;
+$item_number = 1;
+$amount = 1;
+$quantity = 1;
+
 foreach ($_SESSION as $name => $value){
-$_SESSION['orderTotal'] = 0;
-$itemTotal = 0;
 
 
 if($value > 0){
@@ -79,9 +85,20 @@ $id = substr($name, 8, $length);
 
                        </tr>
 
+                         <input type="hidden" name="item_name_{$item_name}" value="{$row['product_title']}">
+                         <input type="hidden" name="item_number_{$item_number}" value="{$row['product_id']}">
+                         <input type="hidden" name="amount_{$amount}" value="{$row['product_price']}">
+                          <input type="hidden" name="quantity_{$quantity}" value="{$value}">
+
                 DELIMETER;
+                $_SESSION['orderQuantity'] = $_SESSION['orderQuantity'] + $_SESSION['product_'. $id . ''];
                 $_SESSION['orderTotal'] = $_SESSION['orderTotal'] + $blah;
                 echo $product;
+                $item_name++;
+                $item_number++;
+                $amount++;
+                $quantity++;
+
         }
 }
 }

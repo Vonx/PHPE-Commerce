@@ -6,6 +6,8 @@
 <?php
 
 $_SESSION['orderTotal'] = 0;
+$_SESSION['orderQuantity'] = 0;
+
 if($_SESSION['product_1']){
 echo $_SESSION['product_1'];
 }
@@ -21,7 +23,11 @@ echo $_SESSION['product_1'];
 <div class="row">
       <h4 class="text-center bg-danger"><?php displayMessage(); ?> </h4>
       <h1>Checkout</h1>
-<form action="">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_cart">
+  <input type="hidden" name="business" value="personal@broogal.com">
+  <input type="hidden" name="currency_code" value="USD">
+  <input type="hidden" name="upload" value="1">
     <table class="table table-striped">
         <thead>
           <tr>
@@ -35,6 +41,9 @@ echo $_SESSION['product_1'];
     <?php cart(); ?>
         </tbody>
     </table>
+     <input type="image" name="upload"
+        src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+        alt="PayPal - The safer, easier way to pay online">
 </form>
 
 
@@ -48,7 +57,7 @@ echo $_SESSION['product_1'];
 
 <tr class="cart-subtotal">
 <th>Items:</th>
-<td><span class="amount">4</span></td>
+<td><span class="amount"><?php echo $_SESSION['orderQuantity']; ?></span></td>
 </tr>
 <tr class="shipping">
 <th>Shipping and Handling</th>
@@ -57,7 +66,7 @@ echo $_SESSION['product_1'];
 
 <tr class="order-total">
 <th>Order Total</th>
-<td><strong><span class="amount">{$_SESSION['orderTotal']}</span></strong> </td>
+<td><strong><span class="amount">&#36;<?php echo $_SESSION['orderTotal']; ?></span></strong> </td>
 </tr>
 
 
